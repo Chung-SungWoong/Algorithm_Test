@@ -12,15 +12,15 @@ ex)					ans)  2
 2 2 2
 """
 
-n, m = map(int, input().split())
+n, m = map(int, input().split())				#input값 입력. 
 
 result = 0
 
 for i in range(n):
-	data = list(map(int, input().split()))
+	data = list(map(int, input().split()))		#각 인풋값들을 리스트에 저장
 	
-	min_val = min(data)
+	min_val = min(data)							#한 행중 가장 작은 값
 	
-	result = max(result, min_val)
+	result = max(result, min_val)				#각 행들의 가장 작은 값들 중 가장 큰 값. 찐중최
 	
 print(result)
