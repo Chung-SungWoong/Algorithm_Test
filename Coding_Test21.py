@@ -12,7 +12,7 @@ def solution(n):
             return answer
     return answer
 
-
+print(solution(3043))
 """
 def solution(n):
     answer = 0
