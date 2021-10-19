@@ -11,10 +11,14 @@ def solution(N, stages):
     member = len(stages)
     an = 0
     for i in range(1,N+1):
+        if member == 0:
+            check.append(0)
+            continue
         num = 0 
         num = stages.count(i)
         check.append(num / member)
         member -= num
+        
     for j in range(len(check)):
         an = check.index(max(check))
         answer.append(an+1)
@@ -22,9 +26,20 @@ def solution(N, stages):
 
     return answer
 
-print(solution(4,[4,4,4,4,4]))
+print(solution(5,[2,1,2,4,2,4,3,3]))
 
-"""
-70점 짜리 답
-내일 다시 고쳐봐야 함
+
+""" 답변
+def solution(N, stages):
+    result = {}
+    denominator = len(stages)
+    for stage in range(1, N+1):
+        if denominator != 0:
+            count = stages.count(stage)
+            result[stage] = count / denominator
+            denominator -= count
+        else:
+            result[stage] = 0
+    return sorted(result, key=lambda x : result[x], reverse=True)
+
 """
