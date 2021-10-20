@@ -10,17 +10,25 @@
 여벌의 체육복을 가져온 학생의 수는 1명 이상 n명 이하이고 중복되는 번호는 없습니다.
 여벌 체육복이 있는 학생만 다른 학생에게 체육복을 빌려줄 수 있습니다.
 여벌 체육복을 가져온 학생이 체육복을 도난당했을 수 있습니다. 이때 이 학생은 체육복을 하나만 도난당했다고 가정하며, 남은 체육복이 하나이기에 다른 학생에게는 체육복을 빌려줄 수 없습니다.
-85점 """
+100점 """
 
 def solution(n, lost, reserve):
     answer = n
     num = 0
+    x = []
+    lost.sort()
+    reserve.sort()
+
+    for j in range(len(lost)):
+        if lost[j] in reserve:
+            reserve.remove(lost[j])
+            x.append(lost[j])
+    
+    for k in range(len(x)):
+        lost.remove(x[k])
+
     for i in range(len(lost)):
-        if lost[i] in reserve:
-            reserve.remove(lost[i])
-            num += 1
-            continue
-        elif lost[i] -1 in reserve:
+        if lost[i] -1 in reserve:
             reserve.remove(lost[i]-1)
             num += 1
             continue
@@ -34,4 +42,18 @@ def solution(n, lost, reserve):
     answer = answer - num
     return answer
 
-print(solution(5,[2, 4],[1, 3, 5]))
+print(solution(5,[4, 2],[3, 5]))
+
+"""
+def solution(n, lost, reserve):
+    _reserve = [r for r in reserve if r not in lost]
+    _lost = [l for l in lost if l not in reserve]
+    for r in _reserve:
+        f = r - 1
+        b = r + 1
+        if f in _lost:
+            _lost.remove(f)
+        elif b in _lost:
+            _lost.remove(b)
+    return n - len(_lost)
+"""
