@@ -22,4 +22,8 @@ def solution(s):
     answer = answer.rstrip()
     return answer
 
-print(solution("TRYHELLOWORLD"))
+print(solution("TRYHELLOWORLD "))
+
+"""
+우측에 빈칸이 있으면 빈칸도 출력해야함
+"""
