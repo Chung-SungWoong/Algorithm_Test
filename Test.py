@@ -1,31 +1,13 @@
-def solution(id_list, report, k):
-    answer = []
-    reporter = []
-    reported = []
-    ban = []
-    alarm = []
-
-    del_redun = set(report)
-    one_report = list(del_redun)
-
-    reported = []
-    for i in range(len(one_report)):
-        check = one_report[i].split()
-        reporter.append(check[0])
-        reported.append(check[1])
-
-    for j in id_list:
-        num = reported.count(j)
-        if num >= k:
-            ban.append(j)    
-
-    for m in ban:
-        position  = [index for (index, item) in enumerate(reported) if item == m]
-        for n in position:
-            alarm.append(reporter[n])
-
-
-    for last in id_list:
-        answer.append(alarm.count(last))
-
+def solution(nums):
+    answer = 0
+    i = set(nums)
+    j = list(i)
+    
+    if len(j) >= len(nums)/2:
+        answer = len(nums)/2
+    else:
+        answer = int(len(j))
+    
     return answer
+
+print(solution([3,1,2,3]))
