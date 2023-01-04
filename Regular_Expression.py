@@ -4,5 +4,7 @@
 
 import re
 
-check = re.split("[a-zA-Z]+")
-print(check)
+p = re.compile("[a-zA-Z]+")
+
+print(p.match('ab1sc123'))
+print(p.match('123bad'))
