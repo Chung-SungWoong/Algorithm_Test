@@ -10,6 +10,10 @@ s에서 분리한 문자열을 빼고 남은 부분에 대해서 이 과정을 �
 몇몇개 테스트 케이스 에러가 남 
 아마 재귀함수로 풀어야하지 싶음
 후에 재귀함수로 재도전 필요 (코드 너무 더럽;;)
+
+2023/1/8 
+정답은 맞췄지만 코드가 너무 더러움
++ 다른 사람의 좋은 예시코드 첨부
 """
 def solution(s):
     answer = 0
@@ -18,8 +22,10 @@ def solution(s):
     x = 1
     no_x = 0
     while True:
+        if len(s) == 1:
+            answer = 1
+            break
         check = s[i]
-
         if s[i+n] == check:
             x += 1
             n += 1
@@ -28,19 +34,38 @@ def solution(s):
             n += 1
             
         if x == no_x:
+            if i + n == len(s) - 1:
+                answer += 2
+                break
             answer += 1
-            i = i + n
+            s = s[i+n:]
+            i = 0
             n = 1
             x = 1
             no_x = 0
 
-        if i + n == len(s) and n == 1:
-            answer += 1
+        if i == len(s):
             break
-        elif i + n >= len(s):
+        elif i + n == len(s):
+            answer += 1
             break
     
     return answer
 
-print(solution("banana"))
+print(solution("a"))
 
+"""
+def solution(s):
+    answer = 0
+    sav1=0
+    sav2=0
+    for i in s:
+        if sav1==sav2:
+            answer+=1
+            a=i
+        if i==a:
+            sav1+=1
+        else:
+            sav2+=1
+    return answer
+    """
